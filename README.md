@@ -29,6 +29,8 @@ It is also likely the website may modernize in a way that adds a cruel CAPTCHA o
 There is also the possibility of the website being taken down, somehow. At the time of writing this, it is written "Version 3" near the
 site's logo, implying other versions of the website might have been taken down, or just modernized.
 
+![doujinstyle site logo](./doujinstyle-logo.png)
+
 ## Motivation 💿
 
 While searching for a high quality FLAC recording of [LEMON MELON COOKIE](https://youtu.be/5l8VZEyNRH8) ([TAK](https://www.youtube.com/channel/UCktjMRvuBnE_XLVWIMa2H1w)), I stumbled upon this website, it immediately sparked a flame of need within me; the need to **SCRAPE**; doujinstyle.com
