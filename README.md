@@ -12,6 +12,9 @@ Ethically scrapes doujinstyle.com.
 
 In this case, "content" being mostly music.
 
+> [!WARNING]
+> Tested and developed using Python 3.13. I don't expect the app to run beneath 3.12.
+
 ## Format 📦
 
 Exports each entry into a singular JSON file containing W.I.P.

@@ -112,6 +112,7 @@ class Fetcher:
         log.debug(f'POST {url} -> {r.status_code}')
         return URL(str(r.url))
 
+    # Note: maybe would be better as a function decorator.
     async def _with_retries(self, url: URL, req_func: ReqFunc) -> Optional[bytes]:
         """
         Calls a request function `ReqFunc` and wraps it around retries and exception handling.
@@ -158,6 +159,8 @@ class Fetcher:
         """
         # Do HTTP GET
         res_get: Optional[bytes] = await self._with_retries(url, self._fetch)
+
+        # Drop POST if GET unsuccessful?
 
         # Do HTTP POST
         res_post: Optional[bytes] = await self._with_retries(url, self._post)
