@@ -3,6 +3,7 @@
 # Date: 2025-08-15
 # License: MIT
 import asyncio
+from typing import Iterable
 
 from httpx import Limits, Timeout, AsyncClient
 
@@ -19,7 +20,10 @@ async def main() -> None:
     timeout: Timeout = Timeout(10.0)
     async with AsyncClient(limits=limits, timeout=timeout) as client:
         site_fetcher: Fetcher = Fetcher(client)
-        await site_fetcher.fetch(lambda b: print(b))
+
+        # Three first IDs.
+        ids: Iterable[int] = range(3)
+        await site_fetcher.fetch(ids, lambda b: print(b))
         site_parser: Parser = Parser()
 
 
