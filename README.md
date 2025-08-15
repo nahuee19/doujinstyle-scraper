@@ -14,7 +14,7 @@ In this case, "content" being mostly music.
 
 ## Format 📦
 
-Exports each entry into a singular JSON file containing.
+Exports each entry into a singular JSON file containing W.I.P.
 
 ## Time & Breakage ⏳
 
