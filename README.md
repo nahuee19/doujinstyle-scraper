@@ -122,7 +122,7 @@ The app has three main components:
 The `fetcher` and `parser` communicate via a callback function that is called whenever the `fetcher` fetched
 the data.
 
-## Find Highest Item ID
+## Find Highest Item ID 🗻
 
 1. Visit [doujinstyle.com](https://doujinstyle.com/) and click on the title of the latest item (top left hand corner)
 2. Copy the URL's ID following this format: `https://doujinstyle.com/?p=page&type=1&id=<item_id>`
