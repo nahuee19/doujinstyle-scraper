@@ -6,19 +6,18 @@
 import asyncio
 
 from httpx import Limits, Timeout, AsyncClient
-from yarl import URL
 
-from scraper.fetcher import Fetcher, FetchedItem
+from scraper.fetcher import Fetcher, Outcome
 from scraper.logger import log
-from scraper.parser import Parser
 
 
-def fetcher_callback(resp: FetchedItem) -> None:
-    g: bytes = resp.resp_get_content
-    p: URL = resp.resp_post_url
-    # print(f'GET Resp: {g}')
-    if resp.url != p:
-        print(f'POST Resp [{resp.item_id}]: {p}')
+def fetcher_callback(resp: Outcome) -> None:
+    log.debug(resp.res.status_code)
+    # g: bytes = resp.resp_get_content
+    # p: URL = resp.resp_post_url
+    # # print(f'GET Resp: {g}')
+    # if resp.url != p:
+    #     print(f'POST Resp [{resp.item_id}]: {p}')
 
 
 async def main() -> None:
@@ -26,13 +25,13 @@ async def main() -> None:
     timeout: Timeout = Timeout(10.0)
     # follow_redirects=True is important for the POST.
     async with AsyncClient(limits=limits, timeout=timeout, follow_redirects=True) as client:
-        site_fetcher: Fetcher = Fetcher(client)
+        async with Fetcher(client, print_metrics=True) as fetcher:
+            await fetcher.fetch_single(0, fetcher_callback)
+            await fetcher.fetch_single(1, fetcher_callback)
 
-        # The first `id_max` IDs. 0..=id_max
-        id_max: int = 15
-        await site_fetcher.fetch_range(range(id_max), fetcher_callback)
-        # await site_fetcher.fetch_single(0, fetcher_callback)
-        site_parser: Parser = Parser()
+            # Wait for all tasks to finish.
+            await fetcher.join()
+
 
 
 if __name__ == '__main__':

@@ -6,7 +6,6 @@ import asyncio
 from asyncio import AbstractEventLoop, Semaphore
 from concurrent.futures.thread import ThreadPoolExecutor
 
-from scraper.fetcher import FetchedItem
 
 
 class Parser:
@@ -20,7 +19,8 @@ class Parser:
         _parse_tasks: set[asyncio.Task] = set()
 
     def fetcher_callback(self, item):
+        pass
 
-    def parse_sync(self, item: FetchedItem) -> None:
+    def parse_sync(self, item: None) -> None:
         """Runs in a thread: bs4 + JSON dumping"""
         pass
